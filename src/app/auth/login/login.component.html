@@ -2,14 +2,31 @@
     <div class="container">
   <div class="login-card">
     <h2>Login</h2>
-    <form>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-
-      <button type="submit">Login</button>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+    <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput minlength="3" [(ngModel)]="userLogin.username" placeholder="username" type="text"
+              id="username" name="username" #username="ngModel" required>
+            @if(username.invalid && username.touched){
+            <mat-error>Username is required</mat-error>
+            }
+          </mat-form-field>
+                <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+              [(ngModel)]="userLogin.password" type="password" id="password" name="password" #password="ngModel"
+              required>
+            @if (password.errors?.['required'] && password.touched) {
+            <mat-error>Password is required. </mat-error>
+            }@else if( password.errors?.['pattern'] && password.touched){
+                <mat-error>Invalid password. </mat-error>
+            }
+          </mat-form-field>
+        <p>Didn't have an account ? <span [routerLink]="['/signup']" class="text-info " style="text-decoration: underline; cursor: pointer;">Signup now</span></p>
+     
+        <button [disabled]="loginForm.invalid"
+          [ngClass]="{ 'disabled-btn': loginForm.invalid, 'active-button': loginForm.valid }"
+          type="submit">Login</button>
     </form>
   </div>
 </div>

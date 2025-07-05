@@ -1,1 +1,73 @@
-<p>signup works!</p>
+<div class="parent mt-5">
+  <div class="container">
+    <div class="signup-card">
+      <h2>signup</h2>
+      <form (ngSubmit)="onSignup()" #signupForm="ngForm">
+        <div class="d-flex gap-2 my-2">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput minlength="3" [(ngModel)]="userSignup.username" placeholder="username" type="text"
+              id="username" name="username" #username="ngModel" required>
+            @if(username.invalid && username.touched){
+            <mat-error>Username is required</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="userSignup.email" minlength="5" maxlength="30"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$" type="text" id="email" placeholder="email"
+              name="email" #email="ngModel" required>
+            @if(email.errors?.['required'] && email.touched){
+            <mat-error>Email is required</mat-error>
+            }
+            @else if(email.errors?.['pattern'] && email.touched){
+            <mat-error>This is not a valid email.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex gap-2 my-2">
+
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+              [(ngModel)]="userSignup.password" type="password" id="password" name="password" #password="ngModel"
+              required>
+            @if (password.errors?.['required'] && password.touched) {
+            <mat-error>Password is required. </mat-error>
+            }@else if( password.errors?.['pattern'] && password.touched){
+            <mat-error>Invalid password. </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Phone Num</mat-label>
+            <input matInput [(ngModel)]="userSignup.phoneNum" type="tel" id="phoneNum" placeholder="Phone Number"
+              name="phoneNum">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput [(ngModel)]="userSignup.address" placeholder="address" type="text" id="address"
+            name="address">
+
+        </mat-form-field>
+
+        <mat-radio-group [(ngModel)]="userSignup.selectedRole" name="selectedRole" unselected-icon-color="orange" aria-label="Select your role" aria-required="true" #selectedRole="ngModel" required>
+        <span style="color: black;">  
+          <mat-radio-button value="seller"><span class="text-black">seller</span></mat-radio-button>
+          <mat-radio-button value="consumer"><span class="text-black">consumer</span></mat-radio-button>
+          <br>
+          @if (!userSignup.selectedRole && signupForm.touched) {
+             <span class="text-danger">(select your role)</span>
+            }</span>
+        </mat-radio-group>
+  <p>Have an account ? <span [routerLink]="['/login']" class="text-info " style="text-decoration: underline; cursor: pointer;">Login now</span></p>
+
+        <button [disabled]="signupForm.invalid"
+          [ngClass]="{ 'disabled-btn': signupForm.invalid, 'active-button': signupForm.valid }"
+          type="submit">signup</button>
+      </form>
+    </div>
+  </div>
+</div>

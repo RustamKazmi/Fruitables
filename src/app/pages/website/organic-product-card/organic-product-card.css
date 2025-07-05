@@ -1,0 +1,46 @@
+
+:root{
+    --text-color: #4b4948;
+    --bs-secondary: #ffb524;
+    --bs-white: #fff
+}
+/*** service Start ***/
+.service .service-item .service-content {
+    position: relative;
+    width: 250px; 
+    height: 130px; 
+    top: -50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+/*** service End ***/
+
+
+/*** Fruits Start ***/
+
+
+
+
+ .fruite-item {
+    height: 100%;
+    transition: 0.5s;
+}
+
+ .fruite-item:hover {
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+}
+
+ .fruite-item .fruite-img {
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 10px 10px 0 0;
+}
+
+ .fruite-item .fruite-img img {
+    transition: 0.7s;
+}
+
+ .fruite-item .fruite-img img:hover {
+    transform: scale(1.4);
+}

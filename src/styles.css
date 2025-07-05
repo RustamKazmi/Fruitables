@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+body { margin: 0;font-family: "Raleway", sans-serif; }
+
+.bg-primary {
+    background-color: #81c408 !important;
+}
+
+.bg-secondary {
+    background-color: #ffb524 !important;
+}
+
+.text-primary{
+    color: #81c408 !important;
+}
+
+.text-secondary{
+    color:  #ffb524 !important;
+}
+
+a:hover{
+    color:  #ffb524 !important;
+}
+
+.btn-square, .btn-sm-square, .btn-md-square, .btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.bg-light{
+    background-color: #f4f6f8 !important;
+}

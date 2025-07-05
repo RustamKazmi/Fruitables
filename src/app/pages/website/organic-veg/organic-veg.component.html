@@ -1,1 +1,32 @@
-<p>organic-veg works!</p>
+
+<div class="container carousel-container mb-4 fw-bold">
+<div class="d-sm-flex justify-content-between sm-mx-4 ">
+      <h2>Fresh Organic Vegetables</h2>
+<div class="d-flex gap-2">
+      <button class="carousel-left-btn" (click)="scrollLeft()">←</button>
+     <button class="carousel-right-btn" (click)="scrollRight()">→</button>
+
+</div>
+</div>
+  <div class="carousel-wrapper">
+
+    <div class="carousel" #carousel>
+      @for (item of items; track item.id) {
+        <div class="card">
+             <div class="text-white bg-primary px-3 py-1 rounded position-absolute z-3" style="top: 10px;  left: 10px;">vegetable  </div>
+             <div class="veg-img">
+            <img [src]='item.img' class="img-fluid w-100 rounded-top" alt="{{item.name}}">
+        </div>
+          <h3>{{ item.name }}</h3>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="price-cart">
+            <span>${{ item.price }} / kg</span>
+            <button><i class="fa fa-shopping-cart"></i> Add to cart</button>
+          </div>
+        </div>
+      }
+    </div>
+
+ 
+  </div>
+</div>
